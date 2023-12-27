@@ -1,13 +1,11 @@
-import './App.css';
-import Home from './pages/Home';
+import "./App.css";
+import Inventory from "./pages/Inventory";
 
 function App() {
   return (
-    <div>
-        <h1 className='bg-red-500'>
-          This is the tailwind css effeect
-        </h1>
-    </div>
+    <>
+      <Inventory />
+    </>
   );
 }
 
