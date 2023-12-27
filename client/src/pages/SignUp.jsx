@@ -93,6 +93,7 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
       setShowModal(false);
       setShowSignInModal(false);
       setLoginError("");
+      navigate('/')
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
         setLoginError(error.response.data.error);
@@ -116,12 +117,14 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
 
   return (
     <>
+      <Link to={'/signup'}>
       <button
         onClick={openModal}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+        className="rounded-md p-1 w-full text-green-800 font-medium cursor-pointer text-center border border-green-700 no-underline hover:bg-green-700 hover:text-white"
       >
         SIGN UP
       </button>
+      </Link>
       {showModal && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 z-50 mt-64">
           <div className="flex justify-center items-center h-20">
