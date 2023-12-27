@@ -22,24 +22,30 @@ const grocerySchema = new mongoose.Schema({
   },
   supplier: {
     name: {
-      type: String
+      type: String,
+      default:'Fresh Dairy Co.'
     },
     contact: {
-      type: String
+      type: String,
+      default:'987-654-3210'
     },
     address: {
-      type: String
+      type: String,
+      default:'456 Dairy Ave, City, Country'
     }
   },
   productDetails: {
     barcode: {
-      type: String
+      type: String,
+      default:'7890123456'
     },
     brand: {
-      type: String
+      type: String,
+      default:"Farm's Best"
     },
     weightVolume: {
-      type: String
+      type: String,
+      default:'1 liter'
     }
   },
   purchaseDetails: {
@@ -48,10 +54,12 @@ const grocerySchema = new mongoose.Schema({
       default: Date.now  
     },
     purchasePrice: {
-      type: Number
+      type: Number,
+      default:1.99
     },
     purchaseOrderNumber: {
-      type: String
+      type: String,
+      default:'PO54321'
     }
   }
 });

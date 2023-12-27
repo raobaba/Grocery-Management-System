@@ -144,7 +144,7 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
               </h2>
               <div className="flex justify-center text-center">
                 {signUpError && (
-                  <p className="text-red-950 font-light text-sm">{signUpError}</p>
+                  <p className="text-red-700 font-light text-sm">{signUpError}</p>
                 )}
               </div>
               <form onSubmit={handleSignUpFormSubmit}>
