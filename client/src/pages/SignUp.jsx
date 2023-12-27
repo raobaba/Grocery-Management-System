@@ -22,17 +22,25 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
   const signInModalRef = useRef();
 
   const handleCloseSignInModal = (e) => {
+    navigate('/')
+    setLoginError('');
+    setSignUpError('')
     if (signInModalRef.current && !signInModalRef.current.contains(e.target)) {
       setShowSignInModal(false);
       setShowModal(false);
+    
     }
   };
 
   useEffect(() => {
     const handleCloseModal = (e) => {
+      navigate('/')
+      setLoginError('');
+      setSignUpError('')
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setShowModal(false);
         setShowSignInModal(false);
+        
       }
     };
     if (showModal || showSignInModal) {
@@ -56,6 +64,7 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
       ...signUpFormData,
       [e.target.id]: e.target.value,
     });
+    setSignUpError('')
   };
 
   const handleSignInInputChange = (e) => {
@@ -63,6 +72,7 @@ const SignUp = ({ showModal, setShowModal, openModal }) => {
       ...signInFormData,
       [e.target.id]: e.target.value,
     });
+    setLoginError('')
   };
 
   const handleSignUpFormSubmit = async (e) => {
