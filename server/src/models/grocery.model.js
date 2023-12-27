@@ -25,13 +25,12 @@ const grocerySchema = new mongoose.Schema({
       type: String
     },
     contact: {
-      type: String 
+      type: String
     },
     address: {
       type: String
     }
   },
-  
   productDetails: {
     barcode: {
       type: String
@@ -40,12 +39,13 @@ const grocerySchema = new mongoose.Schema({
       type: String
     },
     weightVolume: {
-      type: String 
+      type: String
     }
   },
   purchaseDetails: {
     purchaseDate: {
-      type: Date
+      type: Date,
+      default: Date.now  
     },
     purchasePrice: {
       type: Number
@@ -53,8 +53,7 @@ const grocerySchema = new mongoose.Schema({
     purchaseOrderNumber: {
       type: String
     }
-  },
-
+  }
 });
 
 const Grocery = mongoose.model('Grocery', grocerySchema);
