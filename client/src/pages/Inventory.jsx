@@ -121,28 +121,7 @@ function Inventory() {
       }
     }
   };
-  const handleEdit = (id) => {
-    try {
-      console.log("Edit item with ID:", id);
-    } catch (error) {}
-  };
 
-  const handleDelete = async (id) => {
-    console.log(id)
-    try {
-      const response = await API.deleteGroceryItem(id);
-      setGroceryData(response.data);
-      fetchGroceryData();
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.error) {
-        setGroceryError(error.response.data.error);
-      } else if (error.message) {
-        setGroceryError(error.message);
-      } else {
-        setGroceryError("An error occurred");
-      }
-    }
-  };
   return (
     <div className="h-screen border bg-gradient-to-r from-gray-400 via-yellow-500 to-indigo-300 md:w-full lg:w-full w-full">
       <Navbar />
@@ -160,8 +139,14 @@ function Inventory() {
       />
       <GroceryList
         groceryData={groceryData}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
+        showModal={showModal}
+        setGroceryError={setGroceryError}
+        groceryError={groceryError}
+        modalRef={modalRef}
+        fetchGroceryData={fetchGroceryData}
+        closeModal={closeModal}
+        openModal={openModal}
+        setGroceryData={setGroceryData}
       />
     </div>
   );

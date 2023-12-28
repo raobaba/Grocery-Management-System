@@ -1,12 +1,35 @@
 import React from "react";
+import { API } from "../services/api";
 
+function GroceryList({ groceryData,fetchGroceryData ,setGroceryError,groceryError,setGroceryData}) {
 
-function GroceryList({ groceryData, handleEdit, handleDelete }) {
+  const handleEdit = (id) => {
+    try {
+      console.log("Edit item with ID:", id);
+    } catch (error) {}
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await API.deleteGroceryItem(id);
+      console.log('Deleted Successfully', response)
+      fetchGroceryData();
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.error) {
+        setGroceryError(error.response.data.error);
+      } else if (error.message) {
+        setGroceryError(error.message);
+      } else {
+        setGroceryError("An error occurred");
+      }
+    }
+  };
+
   return (
     <div className="flex justify-center">
-      <div className="w-10/12 mt-2 rounded-xl h-24 bg-gradient-to-r from-gray-400 via-yellow-500 to-indigo-300 text-center">
+      <div className="w-10/12 mt-2 rounded-xl h-24 text-center">
         <table className="w-full">
-          <thead>
+          <thead className="bg-gradient-to-r from-gray-400 via-yellow-400 to-indigo-300">
             <tr>
               <th className="p-2">Name</th>
               <th className="p-2">Quantity</th>
@@ -22,9 +45,9 @@ function GroceryList({ groceryData, handleEdit, handleDelete }) {
             {groceryData.map((item) => (
               <tr
                 key={item.id}
-                className="bg-gray-400 border-b border-slate-300 rounded-xl"
+                className="border rounded-b-2xl"
               >
-                <td className="p-2">{item.name}</td>
+                <td className="p-2 rounded-t-2xl">{item.name}</td>
                 <td className="p-2">{item.quantity}</td>
                 <td className="p-2">{item.category}</td>
                 <td className="p-2">{item.price}</td>
@@ -38,7 +61,7 @@ function GroceryList({ groceryData, handleEdit, handleDelete }) {
                   <p>Brand: {item.productDetails.brand}</p>
                   <p>Weight/Volume: {item.productDetails.weightVolume}</p>
                 </td>
-                <td className="text-sm font-thin ml-4">
+                <td className="text-sm font-thin ml-4 border-b">
                   <p>Purchase Price: {item.purchaseDetails.purchasePrice}</p>
                   <p>
                     Order Number: {item.purchaseDetails.purchaseOrderNumber}
@@ -52,13 +75,13 @@ function GroceryList({ groceryData, handleEdit, handleDelete }) {
                 </td>
                 <td className="p-2">
                   <button
-                    onClick={() => handleEdit(item.id)}
+                    onClick={() => handleEdit(item._id)}
                     className="mr-2 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded"
                   >
                     Edit
                   </button>
                   <button
-                    onClick={() => handleDelete(item.id)}
+                    onClick={() => handleDelete(item._id)}
                     className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
                   >
                     Delete

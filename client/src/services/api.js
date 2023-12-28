@@ -1,7 +1,7 @@
 // API.js
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/v1";
+const API_URL = "https://c-point-server.onrender.com/api/v1";
 
 const API = {
   signUpUser: async (userData) => {
@@ -40,17 +40,18 @@ const API = {
       throw new Error(error.response.data.message);
     }
   },
-  updateGroceryItem :async (id)=>{
+  updateGroceryItem: async (id, updatedData) => {
     try {
-      const response = await axios.get(`${API_URL}/grocery/update/${id}`);
+      const response = await axios.put(`${API_URL}/grocery/update/${id}`, updatedData);
       return response.data;
     } catch (error) {
       throw new Error(error.response.data.message);
     }
   },
-  deleteGroceryItem :async (id)=>{
+
+  deleteGroceryItem: async (id) => {
     try {
-      const response = await axios.get(`${API_URL}/grocery/delete/${id}`);
+      const response = await axios.delete(`${API_URL}/grocery/delete/${id}`);
       return response.data;
     } catch (error) {
       throw new Error(error.response.data.message);

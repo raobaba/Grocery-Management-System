@@ -2,6 +2,7 @@ const Grocery = require('../models/grocery.model.js');
 
 const createGrocery = async (req, res) => {
   try {
+
     const newGrocery = await Grocery.create(req.body);
     res.status(201).json({ message: 'Grocery item created', data: newGrocery });
   } catch (error) {
