@@ -1,6 +1,6 @@
 # Grocery Inventory Management System
 
-Brief introduction or description of the project.
+An efficient web application managing groceries with user authentication, enabling seamless creation, update, and deletion of items.
 
 ## Table of Contents
 
@@ -64,7 +64,8 @@ Describe the available API endpoints and their functionalities. Include examples
 
 ## Contributing
 
-Guidelines for contributing to the project, how to report bugs, or suggest improvements.
+Feel free to contribute by opening issues or pull requests. Follow the existing code style and guidelines.
+for contribution connect here raorajan9576@gmail.com
 
 ## License
 
